@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Chat-Mobile</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="brands"></string>
+    <string-array name="string_array_name">
+        <item>string_value1</item>
+        <item>string_value2</item>
+        <item>string_value3</item>
+    </string-array>
 </resources>
