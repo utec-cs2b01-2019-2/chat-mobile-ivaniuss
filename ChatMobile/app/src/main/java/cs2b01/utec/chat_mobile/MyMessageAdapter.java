@@ -13,19 +13,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.ViewHolder> {
+class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
     public JSONArray elements;
     private Context mContext;
     private int userFromId;
 
-    public MyMessageAdapter(JSONArray elements, Context mContext, int userFromId) {
-        this.elements = elements;
-        this.mContext = mContext;
-        this.userFromId = userFromId;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView friendLine;
         TextView myLine;
         RelativeLayout container;
@@ -38,18 +32,24 @@ public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.View
         }
     }
 
+    public MessageAdapter(JSONArray elemnents, Context mContext, int userFromId){
+        this.elements = elemnents;
+        this.mContext = mContext;
+        this.userFromId = userFromId;
+    }
+
     @NonNull
     @Override
-    public MyMessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(
                 parent.getContext()).inflate(
                 R.layout.message_view, parent, false
         );
-        return new MyMessageAdapter.ViewHolder(view);
+        return new MessageAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyMessageAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         try{
             JSONObject element = elements.getJSONObject(position);
             String mFirstLine = element.getString("content");

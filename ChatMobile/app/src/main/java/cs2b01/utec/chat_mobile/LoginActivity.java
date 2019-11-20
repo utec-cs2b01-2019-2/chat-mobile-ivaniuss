@@ -56,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         // 4. Sending json message to Server
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
-                //"http://10.0.2.2:8000/authenticate",
                 "http://10.0.2.2:8000/authenticate",
+                //"https://cchatweb.herokuapp.com/authenticate",
                 jsonMessage,
                 new Response.Listener<JSONObject>() {
                     @Override
