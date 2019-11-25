@@ -13,43 +13,43 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
+public class MyMessageAdapter extends RecyclerView.Adapter<MyMessageAdapter.ViewHolder> {
 
     public JSONArray elements;
     private Context mContext;
     private int userFromId;
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public MyMessageAdapter(JSONArray elements, Context mContext, int userFromId) {
+        this.elements = elements;
+        this.mContext = mContext;
+        this.userFromId = userFromId;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView friendLine;
         TextView myLine;
         RelativeLayout container;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            friendLine = itemView.findViewById(R.id.element_view_friend_line);
-            myLine = itemView.findViewById(R.id.element_view_me_line);
+            friendLine = itemView.findViewById(R.id.txtContact);
+            myLine = itemView.findViewById(R.id.txtUser);
             container = itemView.findViewById(R.id.element_view_container);
         }
     }
 
-    public MessageAdapter(JSONArray elemnents, Context mContext, int userFromId){
-        this.elements = elemnents;
-        this.mContext = mContext;
-        this.userFromId = userFromId;
-    }
-
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyMessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(
                 parent.getContext()).inflate(
                 R.layout.message_view, parent, false
         );
-        return new MessageAdapter.ViewHolder(view);
+        return new MyMessageAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyMessageAdapter.ViewHolder holder, int position) {
         try{
             JSONObject element = elements.getJSONObject(position);
             String mFirstLine = element.getString("content");
